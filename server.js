@@ -19,6 +19,15 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(morgan(format));
 
+//
+app.use("/data", express.static(__dirname + "/api"));
+app.use("/static", express.static(__dirname + "/node_modules"));
+
+app.get("/", function(req,res){
+  res.sendFile(__dirname + "/index.html")
+});
+//
+
 let router = express.Router();
 
 router.get('/', (req, res) => {
