@@ -1,5 +1,4 @@
-function probando() {
-  console.log("funcionando");
+var funcionEjecutadora = function () {
+   $('.carousel.carousel-slider').carousel();
 }
-
-probando();
+$(document).ready(funcionEjecutadora);
