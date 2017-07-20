@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Yape Steph</title>
+    <link rel="stylesheet" href="../static/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+  </head>
+  <body>
+    <section class="container">
+      <div class="row margin-top-1">
+        <h2 class="bold col s1"> < </h2><h3 class="col s1 margin-top-4"> Volver </h3>
+        <img class="col s1 offset-s8 margin-top-4" src="../img/icons/question.png" alt="question">
+      </div>
+      <div class="row center margin-top-20">
+        <img src="../img/icons/bcp-logo.png" alt="">
+        <h3 class="col s8 offset-s2 bold">Ingresa la clave de tu tarjeta</h2>
+        <h4 class="col s10 offset-s1 texto-gris">Tarjeta
+          <span class=" texto-negro bold">****</span>
+          <span id="terminacionTarjeta"></span>
+        </h4>
+      </div>
+      <form>
+        <div class="input-field row center margin-top-10">
+          <img class="col s1" src="../img/icons/lock.png">
+          <input type="password" class="form-datos validate center col s10 bold" placeholder="°°°°">
+        </div>
+      </form>
+      <div class="center margin-top-20">
+        <a id="registrarTarjeta" class="btn btn-amarillo btn-mediano margin-top"  disabled="">REGISTRAR</a>
+      </div>
+    </section>
+    <script src="../static/jquery/dist/jquery.min.js"></script>
+    <script src="../static/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="../js/post.js"></script>
+  </body>
+</html>
