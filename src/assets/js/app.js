@@ -1,17 +1,16 @@
 var habilitarContinuar = function () {
-  console.log("si esta entrando");
   var numeroTelefonico = $("#numeroTelefonico").val().length;
-  console.log(numeroTelefonico);
-  if(numeroTelefonico == 10) {
-    $("#continuar").removeClass("disabled");
-    console.log(continuar);
-  };
+  var checkbox = $("#checkbox");
+  if(numeroTelefonico == 10 && checkbox.prop("checked",true)) {
+    $("#continuar").removeAttr("disabled");
+  } else {
+    $("#continuar").attr("disabled", true);
+  }
 }
 
 var funcionEjecutadora = function () {
   $('.carousel.carousel-slider').carousel();
-  habilitarContinuar();
-  alert("sigue");
+  $("#numeroTelefonico").keyup(habilitarContinuar);
 }
 
 $(document).ready(funcionEjecutadora);
