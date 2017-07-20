@@ -3,11 +3,12 @@ var sass = require("gulp-sass");
 var browserSync = require("browser-sync").create();
 
 var rutas = {
-  rutaHTML: "src/index.html",
+  rutaHTML:           "src/index.html",
   rutaValidacionHTML: "src/validacion.html",
-  rutaCodigoHTML: "src/codigo.html",
-  rutaSCSS: "src/assets/scss/main.scss",
-  rutaJS: "src/assets/js/app.js"
+  rutaCodigoHTML:     "src/codigo.html",
+  rutaSCSS:           "src/assets/scss/main.scss",
+  rutaJS:             "src/assets/js/app.js",
+  rutaPostJS:         "src/assets/js/post.js"
 }
 
 gulp.task("actualizarHTML",function(){
@@ -38,6 +39,11 @@ gulp.task("actualizarCodigoHTML",function(){
   .pipe(gulp.dest("public/views/"))
 });
 
+gulp.task("actualizarPostJS", function(){
+  gulp.src(rutas.rutaPostJS)
+  .pipe(gulp.dest("public/js/"))
+});
+
 gulp.task('watchChanges',function(){
     browserSync.init({
         server:{
@@ -49,6 +55,7 @@ gulp.task('watchChanges',function(){
     gulp.watch(rutas.rutaJS, ["js-watch"] );
     gulp.watch(rutas.rutaValidacionHTML, ["htmlValidacion-watch"] );
     gulp.watch(rutas.rutaCodigoHTML, ["htmlCodigo-watch"] );
+    gulp.watch(rutas.rutaPostJS,["post-watch"]);
 });
 
 gulp.task('html-watch',['actualizarHTML'],function(){
@@ -68,5 +75,9 @@ gulp.task('htmlValidacion-watch',['actualizarValidacionHTML'],function(){
 });
 
 gulp.task('htmlCodigo-watch',['actualizarCodigoHTML'],function(){
+  browserSync.reload();
+});
+
+gulp.task('post-watch',['actualizarPostJS'],function(){
   browserSync.reload();
 });
