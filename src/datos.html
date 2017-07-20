@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Yape Steph</title>
+    <link rel="stylesheet" href="../static/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+  </head>
+  <body>
+    <section class="container">
+      <div class="row center margin-top">
+        <img src="../img/icons/lockone.png" alt="lockone">
+        <h3 class="col s8 offset-s2 bold">Crea tu usuario Yape</h2>
+        <h4 class="col s10 offset-s1 texto-gris">Ingresa un nombre, email y clave de usuario.</h4>
+      </div>
+      <form>
+        <div class="input-field row center margin-top-10">
+          <img class="col s1" src="../img/icons/user.png">
+          <input type="text" class="form-datos validate center col s10 bold" placeholder="Nombre">
+        </div>
+        <div class="input-field row center margin-top-10">
+          <img class="col s1" src="../img/icons/message-gray.png">
+          <input type="email" class="form-datos validate center col s10 bold" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="input-field row center margin-top-10">
+          <img class="col s1" src="../img/icons/lock.png">
+          <input type="password" class="form-datos validate center col s10 bold" placeholder="Ingresa clave de 6 dígitos">
+        </div>
+      </form>
+      <div class="row center">
+        <h4 class="texto-gris col s9 offset-s1 center">Cuida esta clave como oro, es tu acceso a Yape</h4>
+      </div>
+      <div class="center">
+        <button type="submit" id="form-datos" class="btn btn-amarillo btn-mediano margin-top-10 texto-40px"  disabled="">CREAR CUENTA</a>
+      </div>
+    </section>
+    <script src="../static/jquery/dist/jquery.min.js"></script>
+    <script src="../static/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="../js/post.js"></script>
+  </body>
+</html>
