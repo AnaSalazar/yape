@@ -8,6 +8,7 @@ var rutas = {
   rutaCodigoHTML:     "src/codigo.html",
   rutaDatosHTML:      "src/datos.html",
   rutaSplashHTML:     "src/splash.html",
+  rutaTarjetaHTML:    "src/registro-tarjeta.html",
   rutaSCSS:           "src/assets/scss/main.scss",
   rutaJS:             "src/assets/js/app.js",
   rutaPostJS:         "src/assets/js/post.js"
@@ -56,6 +57,11 @@ gulp.task("actualizarSplashHTML",function(){
   .pipe(gulp.dest("public/views/"))
 });
 
+gulp.task("actualizarTarjetaHTML",function(){
+  gulp.src(rutas.rutaTarjetaHTML)
+  .pipe(gulp.dest("public/views/"))
+});
+
 gulp.task('watchChanges',function(){
     browserSync.init({
         server:{
@@ -70,6 +76,7 @@ gulp.task('watchChanges',function(){
     gulp.watch(rutas.rutaPostJS, ["post-watch"] );
     gulp.watch(rutas.rutaDatosHTML, ["htmlDatos-watch"] );
     gulp.watch(rutas.rutaSplashHTML, ["htmlSplash-watch"] );
+    gulp.watch(rutas.rutaTarjetaHTML, ["htmlTarjeta-watch"] );
 });
 
 gulp.task('html-watch',['actualizarHTML'],function(){
@@ -101,5 +108,9 @@ gulp.task('htmlDatos-watch',['actualizarDatosHTML'],function(){
 });
 
 gulp.task('htmlSplash-watch',['actualizarSplashHTML'],function(){
+  browserSync.reload();
+});
+
+gulp.task('htmlTarjeta-watch',['actualizarTarjetaHTML'],function(){
   browserSync.reload();
 });
