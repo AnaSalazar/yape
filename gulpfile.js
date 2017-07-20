@@ -7,6 +7,7 @@ var rutas = {
   rutaValidacionHTML: "src/validacion.html",
   rutaCodigoHTML:     "src/codigo.html",
   rutaDatosHTML:      "src/datos.html",
+  rutaSplashHTML:     "src/splash.html",
   rutaSCSS:           "src/assets/scss/main.scss",
   rutaJS:             "src/assets/js/app.js",
   rutaPostJS:         "src/assets/js/post.js"
@@ -50,6 +51,11 @@ gulp.task("actualizarDatosHTML",function(){
   .pipe(gulp.dest("public/views/"))
 });
 
+gulp.task("actualizarSplashHTML",function(){
+  gulp.src(rutas.rutaSplashHTML)
+  .pipe(gulp.dest("public/views/"))
+});
+
 gulp.task('watchChanges',function(){
     browserSync.init({
         server:{
@@ -63,6 +69,7 @@ gulp.task('watchChanges',function(){
     gulp.watch(rutas.rutaCodigoHTML, ["htmlCodigo-watch"] );
     gulp.watch(rutas.rutaPostJS, ["post-watch"] );
     gulp.watch(rutas.rutaDatosHTML, ["htmlDatos-watch"] );
+    gulp.watch(rutas.rutaSplashHTML, ["htmlSplash-watch"] );
 });
 
 gulp.task('html-watch',['actualizarHTML'],function(){
@@ -90,5 +97,9 @@ gulp.task('post-watch',['actualizarPostJS'],function(){
 });
 
 gulp.task('htmlDatos-watch',['actualizarDatosHTML'],function(){
+  browserSync.reload();
+});
+
+gulp.task('htmlSplash-watch',['actualizarSplashHTML'],function(){
   browserSync.reload();
 });
