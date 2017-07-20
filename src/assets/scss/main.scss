@@ -46,6 +46,10 @@ body {
   margin-top: 25%;
 }
 
+.margin-top-10 {
+  margin-top: 10%;
+}
+
 .bold{
   font-weight: bold;
 }
@@ -70,4 +74,13 @@ input.input{
 
 .texto-negro {
   color: black;
+}
+
+input.form-datos {
+  margin-top: 2% !important;
+  font-size: 35px !important;
+}
+
+.texto-40px {
+  font-size: 40px;
 }
