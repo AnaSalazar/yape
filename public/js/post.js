@@ -30,6 +30,7 @@ var guardarDatos = function (response) {
     // var codigoGuardado = localStorage.getItem("codigo")
 
     // ocupando set y get me lo "escribe" antes de que se carge la siguiente pantalla
+    // opción de solucion: Otro archivo js exclusivo de la siguiente pantalla
 
     localStorage.phone = data.phone;
     localStorage.code = data.code;
@@ -50,9 +51,9 @@ var validarCodigo = function () {
       		localStorage.code = response.data;
           inputCodigoIngresado.val("");
       }).catch(function (error) {
-        alert("no me esta funcionando");
+        alert("no me está funcionando");
       })
-    },21000)
+    }, 21000)
 }
 
 var funcionEjecutadora = function () {
