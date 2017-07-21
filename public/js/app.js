@@ -1,7 +1,6 @@
 var habilitarContinuar = function () {
   var numeroTelefonico = $("#numeroTelefonico").val().length;
-  var checkbox = $("#checkbox");
-  if(numeroTelefonico == 10 && checkbox.prop("checked",true)) {
+  if(numeroTelefonico == 10 && $("#checkbox").prop("checked")) {
     $("#continuar").removeAttr("disabled");
   } else {
     $("#continuar").attr("disabled", true);
@@ -11,6 +10,7 @@ var habilitarContinuar = function () {
 var funcionEjecutadora = function () {
   $('.carousel.carousel-slider').carousel();
   $("#numeroTelefonico").keyup(habilitarContinuar);
+  $("#checkbox").click(habilitarContinuar);
 }
 
 $(document).ready(funcionEjecutadora);
