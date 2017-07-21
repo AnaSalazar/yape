@@ -3,8 +3,9 @@ var api = {
   urlResend: 'http://localhost:8080/api/resendCode',
   urlCreate: 'http://localhost:8080/api/createUser'
 };
-var numeroIngresado;
-var codigoEnviado;
+
+var spanNumeroIngresado = $("#numeroIngresado");
+spanNumeroIngresado.html(localStorage.phone);
 
 var generarCodigo = function () {
   $.post(api.url,{
@@ -12,7 +13,7 @@ var generarCodigo = function () {
     "terms": true
   }).then(function (response){
     console.log(response.data)
-    guardarCodigo(response);
+    guardarDatos(response);
     alert("Código de Validación: " + response.data.code);
     window.location.href="codigo.html ";
   }).catch(function (error) {
@@ -21,23 +22,42 @@ var generarCodigo = function () {
   })
 }
 
-var guardarCodigo = function (response) {
-  if (response.success == true){
-    var responseData = response.data;
-    console.log(response.data);
-    var numeroTelefonico = response.data.phone;
-    var codigo = response.data.code;
+var guardarDatos = function (response) {
+  var data = response.data;
+    // localStorage.setItem("telefono", telefono);
+    // localStorage.setItem("codigo", codigo);
+    // var numeroTelefonico = localStorage.getItem("telefono");
+    // var codigoGuardado = localStorage.getItem("codigo")
 
-    codigoEnviado = localStorage.setItem("codigo", codigo);
-    numeroIngresado = localStorage.setItem("telefono", numeroTelefonico);
-    console.log(numeroIngresado);
+    // ocupando set y get me lo "escribe" antes de que se carge la siguiente pantalla
 
-    // me marca undefined
+    localStorage.phone = data.phone;
+    localStorage.code = data.code;
+    // metodo key()
+}
+
+var validarCodigo = function () {
+  var inputCodigoIngresado = $("#codigoIngresado");
+  if(inputCodigoIngresado.val() === localStorage.code){
+    window.location.href = "datos.html";
   }
+    setTimeout(function(res){
+      $.post(api.resendCode,{
+          // buscar que va aqui, sospecho debo sacarla de aqui
+      }).then(function (response){
+      		console.log(response.data);
+      		alert("Código inválido, Nuevo código de Validación: ");
+      		localStorage.code = response.data;
+          inputCodigoIngresado.val("");
+      }).catch(function (error) {
+        alert("no me esta funcionando");
+      })
+    },21000)
 }
 
 var funcionEjecutadora = function () {
   $("#continuar").click(generarCodigo);
+  $("#codigoIngresado").keyup(validarCodigo);
 }
 
 $(document).ready(funcionEjecutadora);
