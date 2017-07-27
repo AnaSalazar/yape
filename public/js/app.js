@@ -29,7 +29,7 @@ var habilitarBotonContinuarTarjeta = function () {
   var mesVencimiento = $("#mes").val();
   var ageVencimiento = $("#age").val();
 
-  if(numeroTarjeta == 16 && mesVencimiento > 1 && mesVencimiento < 12)
+  if(numeroTarjeta == 16 && mesVencimiento > 1 && mesVencimiento < 12){}
 }
 
 var funcionEjecutadora = function () {
